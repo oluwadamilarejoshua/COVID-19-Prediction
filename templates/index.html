@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>COVID-19 Prediction</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; max-width: 800px; }
+        label { font-weight: bold; }
+        select, input { padding: 5px; }
+        button { grid-column: span 2; padding: 10px; background: #007bff; color: white; border: none; cursor: pointer; }
+        button:hover { background: #0056b3; }
+        .result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h2>COVID-19 Risk Prediction Form</h2>
+    <form action="/predict" method="post">
+
+        <label>Sex:</label>
+        <select name="Sex" required>
+            <option value="1">Male</option>
+            <option value="0" selected>Female</option>
+        </select>
+
+        <label>Birth Year:</label>
+        <input type="number" name="Birth Year" required>
+
+        <label>Chest pain:</label>
+        <select name="Chest pain"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Chills or sweats:</label>
+        <select name="Chills or sweats"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Confused or disoriented:</label>
+        <select name="Confused or disoriented"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Cough:</label>
+        <select name="Cough"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Diarrhea:</label>
+        <select name="Diarrhea"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Difficulty breathing or Dyspnea:</label>
+        <select name="Difficulty breathing or Dyspnea"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Fatigue or general weakness:</label>
+        <select name="Fatigue or general weakness"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Fever:</label>
+        <select name="Fever"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Fluid in lung cavity in auscultation:</label>
+        <select name="Fluid in lung cavity in auscultation"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Fluid in cavity through X-Ray:</label>
+        <select name="Fluid in cavity through X-Ray"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Headache:</label>
+        <select name="Headache"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Joint pain or arthritis:</label>
+        <select name="Joint pain or arthritis"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Thorax (sore throat):</label>
+        <select name="Thorax (sore throat)"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Muscle pain:</label>
+        <select name="Muscle pain"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Nausea:</label>
+        <select name="Nausea"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Other clinical symptoms:</label>
+        <select name="Other clinical symptoms"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Rapid breathing:</label>
+        <select name="Rapid breathing"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Runny nose:</label>
+        <select name="Runny nose"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Maculopapular rash:</label>
+        <select name="Maculopapular rash"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Sore throat or pharyngitis:</label>
+        <select name="Sore throat or pharyngitis"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Bleeding or bruising:</label>
+        <select name="Bleeding or bruising"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Vomiting:</label>
+        <select name="Vomiting"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Abnormal lung X-Ray findings:</label>
+        <select name="Abnormal lung X-Ray findings"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Conjunctivitis:</label>
+        <select name="Conjunctivitis"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Acute respiratory distress syndrome:</label>
+        <select name="Acute respiratory distress syndrome"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Pneumonia (clinical or radiologic):</label>
+        <select name="Pneumonia (clinical or radiologic)"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Loss of Taste:</label>
+        <select name="Loss of Taste"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Loss of Smell:</label>
+        <select name="Loss of Smell"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Cough with sputum:</label>
+        <select name="Cough with sputum"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Cough with heamoptysis:</label>
+        <select name="Cough with heamoptysis"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Enlarged lymph nodes:</label>
+        <select name="Enlarged lymph nodes"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Wheezing:</label>
+        <select name="Wheezing"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Skin ulcers:</label>
+        <select name="Skin ulcers"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Inability to walk:</label>
+        <select name="Inability to walk"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Indrawing of chest wall:</label>
+        <select name="Indrawing of chest wall"><option value="1">Yes</option><option value="0" selected>No</option></select>
+
+        <label>Other complications:</label>
+        <input type="number" step="0.01" name="Other complications">
+
+        <button type="submit">Predict</button>
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">{{ prediction_text }}</div>
+    {% endif %}
+</body>
+</html>
