@@ -101,18 +101,31 @@ def predict():
             X = build_feature_vector_from_json(json_data)
             pred = model.predict(X)[0]
             proba = float(model.predict_proba(X)[0][1])
+
+            # Map prediction to human-friendly message
+            if pred == 0:
+                message = "You have not contracted COVID-19"
+            else:
+                message = "You most likely have contracted COVID-19"
+
             # If request was JSON, return JSON
             if request.is_json:
-                return jsonify({"prediction": int(pred), "probability": proba})
+                return jsonify({"prediction": message, "probability": proba})
             else:
-                return render_template("index.html", prediction_text=f"Prediction: {int(pred)} (Probability: {proba:.2f})")
+                return render_template("index.html", prediction_text=f"{message} (Probability: {proba:.2f})")
 
         # Otherwise, handle form POST (from HTML)
         form = request.form
         X = build_feature_vector_from_form(form)
         pred = model.predict(X)[0]
         proba = float(model.predict_proba(X)[0][1])
-        return render_template("index.html", prediction_text=f"Prediction: {int(pred)} (Probability: {proba:.2f})")
+
+        if pred == 0:
+            message = "You have not contracted COVID-19"
+        else:
+            message = "You most likely have contracted COVID-19"
+
+        return render_template("index.html", prediction_text=f"{message} (Probability: {proba:.2f})")
 
     except Exception as e:
         # return error as JSON for API clients, and in-page message for browser
